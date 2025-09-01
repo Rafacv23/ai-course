@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  flowise:
+    image: flowiseai/flowise:latest
+    container_name: flowise-app
+    restart: unless-stopped
+    environment:
+      - PORT=3000
+      - CORS_ORIGINS=*
+      - IFRAME_ORIGINS=*
+    ports:
+      - "3000:3000"
+    volumes:
+      - flowise_data:/root/.flowise
+      # Mount any custom configurations or workflows
+      - ./flowise-data:/app/uploads
+    networks:
+      - flowise-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  flowise_data:
+    driver: local
+
+networks:
+  flowise-network:
+    driver: bridge
