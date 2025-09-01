@@ -46,16 +46,14 @@ docker-compose up
 
 ### 4. Access the Application
 
-Once the containers are running, access Flowise at:
+Once the containers are running, you have running flowise and ollama with llama3.2, access Flowise at:
 
 **URL:** http://localhost:3000
 
-**Default Credentials:**
-
-- Username: `admin`
-- Password: `1234`
-
-_(Change these in your `.env` file for security)_
+1. Upload the Document Chatbot Chatflow.json file to import the chatflow into Flowise
+2. Add from the .env file your Pinecone API Key
+3. Upsert the database to generate the embeddings
+4. Start chatting
 
 ### API Keys
 
@@ -64,7 +62,7 @@ To use external LLM services, add your API keys to the `.env` file:
 ```bash
 OPENAI_API_KEY=your_openai_api_key_here
 GROQ_API_KEY=your_groq_api_key_here
-PINECODE_API_KEY=your_pinecode_api_key_here
+PINECONE_API_KEY=your_pinecone_api_key_here
 FLOWISE_API_KEY=your_flowise_api_key_here
 ```
 
@@ -72,7 +70,7 @@ FLOWISE_API_KEY=your_flowise_api_key_here
 
 - [Flowise Documentation](https://docs.flowiseai.com/)
 - [Groq Documentation](https://groq.dev/)
-- [Pinecode Documentation](https://pinecode.com/)
+- [Pinecode Documentation](https://pinecone.io/)
 - [Ollama Documentation](https://ollama.ai/)
 
 **Happy Hacking! 🚀**
